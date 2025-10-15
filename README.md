@@ -63,10 +63,3 @@ Refresh ALB DNS → new instance hostname should appear
 ##Step 6: Cleanup
 
 Delete ASG, Launch Template, ALB, Target Group, and Security Groups
-
-
-
-
-
-
-Hands-on AWS project showcasing how to automatically scale EC2 instances using an Auto Scaling Group (ASG) behind an Application Load Balancer (ALB). Includes security group setup, user data script, and dynamic scaling test using stress command
