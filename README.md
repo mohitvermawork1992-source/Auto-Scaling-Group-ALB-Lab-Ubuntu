@@ -6,6 +6,35 @@
 - Simple Nginx web server on each instance
 - Test dynamic scaling based on CPU
 
+
+## 🧩 Architecture
+User → ALB (HTTP 80) → Target Group (ASG Instances)
+
+## ⚙️ Configuration Summary
+
+| Component          | Details                        |
+|-------------------|--------------------------------|
+| OS                 | Ubuntu 22.04                  |
+| Web Server         | Nginx                          |
+| Instance Type      | t3.micro                       |
+| Min/Desired/Max    | 3 / 3 / 10                      |
+| Scaling Policy     | Add instance @ CPU > 40%       |
+| Monitoring         | CloudWatch                     |
+
+---
+
+## 🪜 Steps
+
+### 1️⃣ Launch Template
+User Data script used:
+```bash
+#!/bin/bash
+apt-get update -y
+apt-get install nginx -y
+echo "This is my $(hostname)" > /var/www/html/index.html
+service nginx start
+
+
 ## Pre-requisites
 - AWS Account
 - VPC with 2 public subnets
@@ -23,8 +52,10 @@
 - Key Pair: EC2-key
 - Security Group: ASG-SG
 - User Data: 
+### 1️⃣ Launch Template
+User Data script used:
+```bash
 #!/bin/bash
-# simple Ubuntu user data
 apt-get update -y
 apt-get install nginx -y
 echo "This is my $(hostname)" > /var/www/html/index.html
@@ -63,3 +94,4 @@ Refresh ALB DNS → new instance hostname should appear
 ##Step 6: Cleanup
 
 Delete ASG, Launch Template, ALB, Target Group, and Security Groups
+
