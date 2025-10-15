@@ -91,7 +91,18 @@ stress -c 5
 ASG should automatically add a new instance when CPU utilization exceeds threshold
 Refresh ALB DNS → new instance hostname should appear
 
+
+## 📸 Screenshots
+| Description             | Image |
+|-------------------------|-------|
+| Auto Scaling Group       | ![ASG](screenshots/asg-created.png) |
+| Load Balancer Listener   | ![ALB](screenshots/alb-listener.png) |
+| Dynamic Scaling Test     | ![Scaling](screenshots/scaling-test.png) |
+| EC2 Webpage              | ![Webpage](screenshots/nginx-instance.png) |
+
+
 ##Step 6: Cleanup
 
 Delete ASG, Launch Template, ALB, Target Group, and Security Groups
+
 
